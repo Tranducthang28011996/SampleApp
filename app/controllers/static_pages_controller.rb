@@ -1,4 +1,9 @@
 class StaticPagesController < ApplicationController
+  before_action :newuser, only: :home
+  def index
+    
+  end
+
   def home
   end
 

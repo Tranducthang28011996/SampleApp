@@ -5,11 +5,59 @@
 	<title><%= yield(:title) %>|Ruby on rails tutorial Sample app</title>
 </head>
 <body>
-  <h1>Sample App</h1>
-  <p>
-    This is the home page for the
-    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    sample application.
-  </p>
+	  <div id="menuproduct-left"></div>
+  <div id="menuproduct-right"></div>
+<div id="listproduct">
+	<div id="listproduct-left">
+		<div id="saleproduct-left">
+			<%= image_tag("/assets/sale1.jpg", size: "790x369") %>
+
+		</div>
+		<div id="latestext">
+      <%= image_tag("/assets/logo2.png", size: "328x100") %>
+			
+		</div>
+		<div id="latest_product-left">
+			<div class="latest_product-left-one">
+				<%= image_tag("/assets/man.jpg", size: "253x174") %>
+			</div>
+			<div class="latest_product-left-one">
+				<%= image_tag("/assets/nu.jpg", size: "253x174") %>
+			</div>
+			<div class="latest_product-left-one">
+				<%= image_tag("/assets/nu.jpg", size: "253x174") %>	
+			</div>
+			<div class="latest_product-left-one">
+				<%= image_tag("/assets/mane2.jpg", size: "253x174") %>
+			</div>
+			<div class="latest_product-left-one">
+				<%= image_tag("/assets/nu1.jpg", size: "253x174") %>
+			</div>
+			<div class="latest_product-left-one">
+				<%= image_tag("/assets/nu2.jpg", size: "253x174") %>
+			</div>
+		</div>
+
+	</div>
+	<div id="listproduct-right">
+		<div id="saleproduct-right">
+			<%= image_tag("/assets/sale.jpg", size: "350x369") %>
+		</div>
+		<div id="latest_product-right">
+			<div class="latest_product-right-one">
+				<%= image_tag("/assets/nu2.jpg", size: "349x200") %>
+				
+			</div>
+			<div class="latest_product-right-one">
+				<%= image_tag("/assets/nu2.jpg", size: "349x200") %>
+				
+				
+			</div>
+			<div class="latest_product-right-one"></div>
+		</div>
+	</div>
+
+</div>
+<div id="ortherproduct"></div>
 </body>
 </html>
