@@ -1,0 +1,58 @@
+<table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>DisPrice</th>
+      <th>Trademark</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Image</th>
+      <th>ToTal</th>
+      <th>Setup</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <th scope="row"><%= product.id %></th>
+      <td><%= link_to product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= product.disprice %></td>
+      <td><%= product.trademark %></td>
+      <td><%= product.size %></td>
+      <td><%= product.color %></td>
+      <td><%= product.image %></td>
+      <td><%= product.total %></td>
+      <td><%= link_to 'edit', edit_admin_product_path(product.id) %></td>
+    </tr>
+      <% end %>
+
+  </tbody>
+</table>
+ <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Small Modal</button>
+<div class="container">
+  <h2>Small Modal</h2>
+  <!-- Trigger the modal with a button -->
+ 
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is a small modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
