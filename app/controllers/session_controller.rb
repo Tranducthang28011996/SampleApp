@@ -6,9 +6,10 @@ class SessionController < ApplicationController
     @user=User.find_by(email: params[:session][:email].downcase)
   	if @user && @user.authenticate(params[:session][:password])
 			session[:user_id] = @user.id
+			flash[:danger] = "Welcome to the Sample App!"
 			redirect_to root_url
-		else
-			render :new
+	else
+			flash[:alert] = 'Invalid email/password combination' # Not quite right!
 	end
   end
   def destroy

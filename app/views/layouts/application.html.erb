@@ -9,10 +9,9 @@
   </head>
 
   <body>
-  <%= render 'shared/header' %>
-    <div class="container">
+  <%= render 'shared/header' unless @skip_layout %>
+   
     <%= yield %>
-    </div>
-   <%= render 'shared/footer' %>
+   <%= render 'shared/footer' unless @skip_layout %>
   </body>
 </html>

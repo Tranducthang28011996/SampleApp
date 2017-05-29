@@ -1,0 +1,121 @@
+<div id="ad_menu_top">
+
+</div>
+<div id="ad_content">
+	<div id="ad_sidebar">
+       <div style="padding-top: 19px; padding-left: 15px;">
+         <input type="text" name="search" class="form-control" style="width: 200px">
+       </div>
+        <button type="button" class="btn btn-default" style=" margin-top: -57px; margin-left: 174px;"> 
+      <span class="glyphicon glyphicon-search"></span> 
+     </button>
+      <div id="content_sidebar">
+        <ul>
+          <li id="a"><a href="#"><span class="glyphicon glyphicon-plus-sign"></span></a>&nbsp;Category
+            <div class="subcate" style="display: none;">
+              <ul>
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;MAN
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;WOMEN</li>
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;KID</li>
+              </ul>
+            </div>
+          </li>
+          <li id="a1"><a href="#"><span class="glyphicon glyphicon-plus-sign"></span></a>&nbsp;Product
+            <div class="subcate1" style="display: none;">
+              <ul>
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;MAN
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;WOMEN</li>
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;KID</li>
+              </ul>
+            </div>
+          </li>
+          <li id="a2"><a href="#"><span class="glyphicon glyphicon-plus-sign"></span></a>&nbsp;Chart
+            <div class="subcate2" style="display: none;">
+              <ul>
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;MAN
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;WOMEN</li>
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;KID</li>
+              </ul>
+            </div>
+          </li>
+          <li id="a3"><a href="#"><span class="glyphicon glyphicon-plus-sign"></span></a>&nbsp;User
+            <div class="subcate3" style="display: none;">
+              <ul>
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;MAN
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;WOMEN</li>
+                <li>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-play"></span>&nbsp;KID</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+    </div>               
+
+</div>
+  <div id="ad_content_product">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#index">LIST</a></li>
+      <li><a data-toggle="tab" href="#home">ADD</a></li>
+      <li><a data-toggle="tab" href="#menu1">EDIT</a></li>
+      <li><a data-toggle="tab" href="#menu2">DELETE</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="index" class="tab-pane fade in active">
+        <h3>PRODUCT LIST</h3>
+        <table class="table">
+          <thead class="thead-default">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Trademark</th>
+              <th>Size</th>
+              <th>Color</th>
+              <th>Image</th>
+              <th>ToTal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>T-Shirt</td>
+              <td>13.3$</td>
+              <td>Gucci</td>
+              <td>L</td>
+              <td>Mat me</td>
+              <td>RED</td>
+              <td>12</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="home" class="tab-pane fade">
+        <h3>ADD</h3>
+        <p>Some content.</p>
+      </div>
+      <div id="menu1" class="tab-pane fade">
+        <h3>EDIT</h3>
+        <p>Some content in menu 1.</p>
+      </div>
+      <div id="menu2" class="tab-pane fade">
+        <h3>DELETE</h3>
+        <p>Some content in menu 2.</p>
+      </div>
+    </div>  
+  </div>
+<script>
+$(document).ready(function(){
+    $("#a").click(function(){
+        $(".subcate").slideToggle("slow");
+    });
+    $("#a1").click(function(){
+        $(".subcate1").slideToggle("slow");
+    });
+    $("#a2").click(function(){
+        $(".subcate2").slideToggle("slow");
+    });
+    $("#a3").click(function(){
+        $(".subcate3").slideToggle("slow");
+    });
+});
+</script

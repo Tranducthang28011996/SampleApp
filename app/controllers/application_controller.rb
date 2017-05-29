@@ -3,15 +3,20 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   def current_user
   	@current_user ||= User.find_by(:id => session[:user_id]) if session[:user_id]
+    # binding.pry
   	# byebug
   end
 
   def logged_in?
-  	#tra lai la true neu da login va nguoi lai
-  	!session[:user_id].nil?
+  	if session[:user_id].nil?
+    redirect_to root_url
+  end
   end
 
-  def newuser
-  	
+  def is_admin?
+  if current_user.role.eql? 'admin'
+  else
+    redirect_to root_url
+   end
   end
 end
