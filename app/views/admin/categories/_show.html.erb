@@ -1,10 +1,6 @@
 <ul class="nav nav-tabs">
-      <!-- <li class="active"><a data-toggle="tab" href="#index">LIST</a></li> -->
       <% @subcategories.each do |subcategory| %>
       <li><a data-toggle="tab" href="#home"><%= link_to subcategory.name, admin_category_subcategory_path(subcategory), remote: true %></a></li>
       <% end %>
 </ul>
-
-<div class="tab-content"> 
-
-</div>
+<div class="tab-content"></div>
