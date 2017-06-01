@@ -1,180 +1,574 @@
-     <%#= byebug %>
-  <div id="menutop">
-    <ul id="menutop-left">
-      <li><a href="">Articles</a></li>
-      <li><a href="">Contact</a></li>
-      <li><a href="">Privacy</a></li>
-      <li><a href="">Terms</a></li>
-    </ul>
-    <ul id="menutop-right">
-    <li>
-    <% if current_user %>
-     <a href="" ><%= current_user.name %>|<%= link_to "Logout",  signout_path%></a>
-     <% else %>
-     <a href="" data-toggle="modal" data-target="#myModal" >Login | Register</a>
-    <% end %>
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-              <div class="modal-header" style="background-color: red">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -11px">
-                      ×</button>
-              </div>
-              <div class="modal-body">
-                  <div class="row">
-                      <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
-                          <ul class="nav nav-tabs pull-left">
-                              <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
-                              <li><a href="#Registration" data-toggle="tab">Register</a></li>
-                          </ul>
-                          <div class="tab-content">
-                              <div class="tab-pane active" id="Login">
-                                 <div style="margin-left: 100px">
-                                  <%= form_for :session, url: login_path, method: :post, class: "form-horizontal" do |f| %>
-                                  <div class="form-group">
-                                      <div class="col-sm-10">
-                                        <%= f.text_field :email, class: "form-control",placeholder: "Email" %>
+  
+        <div class="header">
+            <div class="topbar">
+                <div class="container">
+                    <div class="topbar-left">
+                        <ul class="topbar-nav clearfix">
+                            <li><span class="phone">0(123) 456 789</span></li>
+                            <li><span class="email">info@plazathemes.com</span></li>
+                        </ul>
+                    </div>
+                    <div class="topbar-right">
+                        <ul class="topbar-nav clearfix">
+                            <li>
+                                 <a href="" data-toggle="modal" data-target="#myModal" >Login | Register</a>
+                                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+                                  aria-hidden="true">
+                                  <div class="modal-dialog modal-lg">
+                                      <div class="modal-content">
+                                          <div class="modal-header" style="background-color: red">
+                                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -11px">
+                                                  ×</button>
+                                          </div>
+                                          <div class="modal-body">
+                                              <div class="row">
+                                                  <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                                                      <ul class="nav nav-tabs pull-left">
+                                                          <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                                                          <li><a href="#Registration" data-toggle="tab">Register</a></li>
+                                                      </ul>
+                                                      <div class="tab-content">
+                                                          <div class="tab-pane active" id="Login">
+                                                             <div style="margin-left: 100px">
+                                                              <%= form_for :session, url: login_path, method: :post, class: "form-horizontal" do |f| %>
+                                                              <div class="form-group">
+                                                                  <div class="col-sm-10">
+                                                                    <%= f.text_field :email, class: "form-control",placeholder: "Email" %>
 
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <div class="col-sm-10">
-                                        <%= f.password_field :password, class: "form-control",placeholder: "Password" %>
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <div class="col-sm-10">
-                                      <%= f.check_box :remmembertoken %> <span style="color: #737373">Remember password?</span>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-sm-2">
-                                      </div>
-                                      <div style="margin-left: 15px">
-                                        <div class="col-sm-10">
-                                          <%= button_tag "Login", class: "btn btn-primary btn-sm" %>
-                                          <a href="javascript:;">Forgot your password?</a>
-                                      </div>
-                                      </div>
-                                  </div>
-                                  <% end %>
-                                 </div>
-                              </div>
-                              <div class="tab-pane" id="Registration">
-                                  <div style="margin-left: 100px">
-                                    <%= form_for :user, url: signup_path, method: :post, class: 'form-horizontal' do |f| %>
-                                  <div class="form-group">
-                                      <div class="col-sm-10">
-                                          <div class="row">
-                                              <div class="col-md-12">
-                                                  <%= f.text_field :name, class: "form-control",placeholder: "Name" %>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <div class="col-sm-10">
+                                                                    <%= f.password_field :password, class: "form-control",placeholder: "Password" %>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <div class="col-sm-10">
+                                                                  <%= f.check_box :remmembertoken %> <span style="color: #737373">Remember password?</span>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="row">
+                                                                  <div class="col-sm-2">
+                                                                  </div>
+                                                                  <div style="margin-left: 15px">
+                                                                    <div class="col-sm-10">
+                                                                      <%= button_tag "Login", class: "btn btn-primary btn-sm" %>
+                                                                      <a href="javascript:;">Forgot your password?</a>
+                                                                  </div>
+                                                                  </div>
+                                                              </div>
+                                                              <% end %>
+                                                             </div>
+                                                          </div>
+                                                          <div class="tab-pane" id="Registration">
+                                                              <div style="margin-left: 100px">
+                                                                <%= form_for :user, url: signup_path, method: :post, class: 'form-horizontal' do |f| %>
+                                                              <div class="form-group">
+                                                                  <div class="col-sm-10">
+                                                                      <div class="row">
+                                                                          <div class="col-md-12">
+                                                                              <%= f.text_field :name, class: "form-control",placeholder: "Name" %>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <div class="col-sm-10">
+                                                                              <%= f.text_field :email, class: "form-control",placeholder: "Email" %>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <div class="col-sm-10">
+                                                                              <%= f.text_field :moblie, class: "form-control",placeholder: "Mobile" %>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  
+                                                                  <div class="col-sm-10">
+                                                                              <%= f.text_field :address, class: "form-control",placeholder: "Address" %>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  
+                                                                  <div class="col-sm-10">
+                                                                              <%= f.password_field :password, class: "form-control",placeholder: "Password" %>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <div class="col-sm-10">
+                                                                              <%= f.password_field :password_confirmation, class: "form-control",placeholder: "PasswordConfirmation" %>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="row">
+                                                                  <div class="col-sm-2">
+                                                                  </div>
+                                                                  <div style="margin-left: 18px">
+                                                                    <div class="col-sm-10">
+                                                                      <%= button_tag "Save & Continue", class: "btn btn-primary btn-sm" %>
+                                                                  </div>
+                                                                  </div>
+                                                              </div>
+                                                            <% end %>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div id="OR" class="hidden-xs">
+                                                          OR</div>
+                                                  </div>
+                                                  <div class="col-md-4">
+                                                      <div class="row text-center sign-with">
+                                                          <div class="col-md-12">
+                                                              <h3>
+                                                                  Sign in with</h3>
+                                                          </div>
+                                                          <div class="col-md-12">
+                                                              <div class="btn-group btn-group-justified">
+                                                                  <a href="#" class="btn btn-primary">Facebook</a> <a href="#" class="btn btn-danger">
+                                                                      Google</a>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
                                               </div>
                                           </div>
                                       </div>
                                   </div>
-                                  <div class="form-group">
-                                      <div class="col-sm-10">
-                                                  <%= f.text_field :email, class: "form-control",placeholder: "Email" %>
-                                      </div>
                                   </div>
-                                  <div class="form-group">
-                                      <div class="col-sm-10">
-                                                  <%= f.text_field :moblie, class: "form-control",placeholder: "Mobile" %>
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-sm-10">
-                                                  <%= f.text_field :address, class: "form-control",placeholder: "Address" %>
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      
-                                      <div class="col-sm-10">
-                                                  <%= f.password_field :password, class: "form-control",placeholder: "Password" %>
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <div class="col-sm-10">
-                                                  <%= f.password_field :password_confirmation, class: "form-control",placeholder: "PasswordConfirmation" %>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-sm-2">
-                                      </div>
-                                      <div style="margin-left: 18px">
-                                        <div class="col-sm-10">
-                                          <%= button_tag "Save & Continue", class: "btn btn-primary btn-sm" %>
-                                      </div>
-                                      </div>
-                                  </div>
+                            </li>
+                            <li class="dropdown">
+                            <% if current_user %>
+                                <a href="#" class="account dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+                                <% else %>
+                                <a href="#" class="account dropdown-toggle" data-toggle="dropdown">My Account</a>
                                 <% end %>
-                                  </div>
-                              </div>
-                          </div>
-                          <div id="OR" class="hidden-xs">
-                              OR</div>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="row text-center sign-with">
-                              <div class="col-md-12">
-                                  <h3>
-                                      Sign in with</h3>
-                              </div>
-                              <div class="col-md-12">
-                                  <div class="btn-group btn-group-justified">
-                                      <a href="#" class="btn btn-primary">Facebook</a> <a href="#" class="btn btn-danger">
-                                          Google</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      </div>
-    </li>
-    </ul>
-  </div>
-  <div id="logopage"></div>
-  <div id="menuproduct">
-    <ul id="menuproduct-left">
-      <li><a href="">HOME</a></li>
-      <li><a href="">WOMEN</a>
-        <div class ="submenuproduct" >
-          <ul>
-            <li><a href="">Demim womens</a></li>
-            <li><a href="">Winter colection</a></li>
-            <li><a href="">Summer colection</a></li>
-            <li><a href="">Kurti & Saris</a></li>
-
-          </ul>
-        </div>
-      </li>
-      <li><a href="">MEN</a>
-        <div class="submenuproduct" >
-          <ul>
-            <li><a href="">Demim mans</a></li>
-            <li><a href="">Winter colection</a></li>
-            <li><a href="">Summer colection</a></li>
-            <li><a href="">Kurti & Saris</a></li>
-
-          </ul>
-        </div>
-      </li>
-      <li><a href="">COLLECTION</a></li>
-      <li><a href="">STOREPRODUCTS</a></li>
-      <li><a href="">AFFILIATEPRODUCTS</a></li>
-      <li>
-        <input type="text" name="search" class="form-control" style="margin-top: 8px;margin-right: 23px;">
-      </li>
-      <li>
-      <button type="button" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
-    </button>
-    </li>
-      
-    </ul>
-  </div>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a title="My Account" href="account.html">My Account</a></li>
+                                    <li><a title="My Wishlist" href="wishlist.html">My Wishlist</a></li>
+                                    <li><a title="My Cart" href="cart.html">My Cart</a></li>
+                                    <li><a title="Checkout" href="checkout.html">Checkout</a></li>
+                                    <li><%= link_to "Logout",  signout_path%></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="currency dropdown-toggle" data-toggle="dropdown">USD</a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#">Euro</a></li>
+                                    <li><a href="#">US Dollar</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="language dropdown-toggle" data-toggle="dropdown">
+                                <!-- <img src="images/flag-us.png" alt="">  -->
+                                 <%= image_tag 'flag-us.png' %>
+                                English</a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#">
+                                    <!-- <img src="images/flag-us.png" alt=""> -->
+                                 <%= image_tag 'flag-us.png' %>
+                                     &nbsp;English</a></li>
+                                    <li><a href="#">
+                                    <!-- <img src="images/flag-spain.png" alt=""> -->
+                                 <%= image_tag 'flag-spain.png' %>
+                                     &nbsp;Spanish</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- /.container -->
+            </div><!-- /.topbar -->
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="index.html" class="logo">
+                            <%= image_tag 'logo.png' %>
+                            <!-- <img src="../../assets/images/logo.png" alt=""> -->
+                            </a>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="support-client">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="box-container time">
+                                            <div class="box-inner">
+                                                <h2>working time</h2>
+                                                <p>Mon- Sun: 8.00 - 18.00</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="box-container free-shipping">
+                                            <div class="box-inner">
+                                                <h2>Free shipping</h2>
+                                                <p>On order over $199</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="box-container money-back">
+                                            <div class="box-inner">
+                                                <h2>Money back 100%</h2>
+                                                <p>Within 30 Days after delivery</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.support-client -->
+                            <form class="form-search">
+                                <input type="text" class="input-text" name="q" id="search" placeholder="Search products...">
+                                <div class="dropdown">
+                                    <button type="button" class="btn" data-toggle="dropdown">All category <span class="fa fa-angle-down"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">Computer</a></li>
+                                        <li><a href="#">Camera</a></li>
+                                        <li><a href="#">Smart Phone</a></li>
+                                        <li><a href="#">Electronic</a></li>
+                                    </ul>
+                                </div>
+                                <button type="submit" class="btn btn-danger"><span class="fa fa-search"></span></button>
+                            </form>
+                            <div class="mini-cart">
+                                <div class="top-cart-title">
+                                    <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
+                                        your cart
+                                        <span class="price">$45.00</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <div class="cart-listing">
+                                            <div class="media">
+                                                <div class="media-left"><a href="#">
+                                                <!-- <img src="/assets/11.jpg" alt="" class="img-responsive"> -->
+                                                <%= image_tag '11.jpg', class: 'img-responsive'%>
+                                                </a></div>
+                                                <div class="media-body">
+                                                    <button type="button" class="remove-cart-item" >&times;</button>
+                                                    <h4>Accumsan elit</h4>
+                                                    <div class="mini-cart-qty">Qty:2</div>
+                                                    <div class="mini-cart-price">$ 64.00</div>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <div class="media-left"><a href="#"><img src="/assets/13.jpg" class="img-responsive" alt=""></a></div>
+                                                <div class="media-body">
+                                                    <button type="button" class="remove-cart-item" >&times;</button>
+                                                    <h4>Accumsan elit</h4>
+                                                    <div class="mini-cart-qty">Qty:2</div>
+                                                    <div class="mini-cart-price">$ 64.00</div>
+                                                </div>
+                                            </div>
+                                        </div><!-- /.cart-listing -->
+                                        <div class="mini-cart-subtotal">Shipping: <span class="price">$5.00</span></div>
+                                        <div class="mini-cart-subtotal">Total: <span class="price">$200.00</span></div>
+                                        <div class="checkout-btn">
+                                            <a href="#" class="btn btn-default btn-md fwb">CHECK OUT</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mega-container visible-lg visible-md">
+                                <div class="navleft-container">
+                                    <div class="mega-menu-title"><h3>Category</h3></div>
+                                    <div class="mega-menu-category" >
+                                        <ul class="nav">
+                                            <li>
+                                                <a href="#">Computer</a>
+                                                <div class="wrap-popup">
+                                                    <div class="popup">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <h3>brand</h3>
+                                                                <ul class="nav">
+                                                                    <li><a href="#">canon</a></li>
+                                                                    <li><a href="#">samsung</a></li>
+                                                                    <li><a href="#">nikon</a></li>
+                                                                    <li><a href="#">apple</a></li>
+                                                                    <li><a href="#">toshiba</a></li>
+                                                                    <li><a href="#">hp</a></li>
+                                                                    <li><a href="#">nokia</a></li>
+                                                                    <li><a href="#">Sony</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-3 has-sep">
+                                                                <h3>accessories</h3>
+                                                                <ul class="nav">
+                                                                    <li><a href="#">Duis</a></li>
+                                                                    <li><a href="#">autem </a></li>
+                                                                    <li><a href="#">vel eum </a></li>
+                                                                    <li><a href="#">iriure </a></li>
+                                                                    <li><a href="#">dolor </a></li>
+                                                                    <li><a href="#">hendrerit </a></li>
+                                                                    <li><a href="#">vulputate </a></li>
+                                                                    <li><a href="#">velit </a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-6 has-sep">
+                                                                <div class="custom-menu-right">
+                                                                    <div class="box-banner media">
+                                                                        <div class="media-body">
+                                                                            <h3>bags &amp; cases</h3>
+                                                                            <div class="price-sale">40 <sup>%</sup><sub>off</sub></div>
+                                                                            <a href="#">&gt;shop now</a>
+                                                                        </div>
+                                                                        <div class="media-right"><img src="/assets/img-01.jpg" alt=""></div>
+                                                                     </div>
+                                                                     <div class="box-banner media">
+                                                                        <div class="media-body">
+                                                                            <h3>Lens Fulters</h3>
+                                                                            <div class="price-sale">50 <sup>%</sup><sub>off</sub></div>
+                                                                            <a href="#">&gt;shop now</a>
+                                                                        </div>
+                                                                        <div class="media-right"><img src="/assets/img-02.jpg" alt=""></div>
+                                                                     </div>
+                                                                     <div class="box-banner media">
+                                                                        <div class="media-body">
+                                                                            <h3>Flashes</h3>
+                                                                            <div class="price-sale">30 <sup>%</sup><sub>off</sub></div>
+                                                                            <a href="#">&gt;shop now</a>
+                                                                        </div>
+                                                                        <div class="media-right"><img src="/assets/img-03.jpg" alt=""></div>
+                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <a href="#" class="ads"><img alt="" src="images/ads/ads-08.jpg" class="img-responsive"></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#">Camera</a>
+                                                <div class="wrap-popup">
+                                                    <div class="popup">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <h3>brand</h3>
+                                                                <ul class="nav">
+                                                                    <li><a href="#">canon</a></li>
+                                                                    <li><a href="#">samsung</a></li>
+                                                                    <li><a href="#">nikon</a></li>
+                                                                    <li><a href="#">apple</a></li>
+                                                                    <li><a href="#">toshiba</a></li>
+                                                                    <li><a href="#">hp</a></li>
+                                                                    <li><a href="#">nokia</a></li>
+                                                                    <li><a href="#">Sony</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-3 has-sep">
+                                                                <h3>accessories</h3>
+                                                                <ul class="nav">
+                                                                    <li><a href="#">Duis</a></li>
+                                                                    <li><a href="#">autem </a></li>
+                                                                    <li><a href="#">vel eum </a></li>
+                                                                    <li><a href="#">iriure </a></li>
+                                                                    <li><a href="#">dolor </a></li>
+                                                                    <li><a href="#">hendrerit </a></li>
+                                                                    <li><a href="#">vulputate </a></li>
+                                                                    <li><a href="#">velit </a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-6 has-sep">
+                                                                <div class="custom-menu-right">
+                                                                    <div class="box-banner media">
+                                                                        <div class="media-body">
+                                                                            <h3>bags &amp; cases</h3>
+                                                                            <div class="price-sale">40 <sup>%</sup><sub>off</sub></div>
+                                                                            <a href="#">&gt;shop now</a>
+                                                                        </div>
+                                                                        <div class="media-right"><img src="/assets/img-01.jpg" alt=""></div>
+                                                                     </div>
+                                                                     <div class="box-banner media">
+                                                                        <div class="media-body">
+                                                                            <h3>Lens Fulters</h3>
+                                                                            <div class="price-sale">50 <sup>%</sup><sub>off</sub></div>
+                                                                            <a href="#">&gt;shop now</a>
+                                                                        </div>
+                                                                        <div class="media-right"><img src="/assets/img-02.jpg" alt=""></div>
+                                                                     </div>
+                                                                     <div class="box-banner media">
+                                                                        <div class="media-body">
+                                                                            <h3>Flashes</h3>
+                                                                            <div class="price-sale">30 <sup>%</sup><sub>off</sub></div>
+                                                                            <a href="#">&gt;shop now</a>
+                                                                        </div>
+                                                                        <div class="media-right"><img src="/assets/img-03.jpg" alt=""></div>
+                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <a href="#" class="ads"><img alt="" src="images/ads/ads-08.jpg" class="img-responsive"></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#">Smart phone</a>
+                                                <div class="wrap-popup column2">
+                                                    <div class="popup">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <h3>brand</h3>
+                                                                <ul class="nav">
+                                                                    <li><a href="#">canon</a></li>
+                                                                    <li><a href="#">samsung</a></li>
+                                                                    <li><a href="#">nikon</a></li>
+                                                                    <li><a href="#">apple</a></li>
+                                                                    <li><a href="#">toshiba</a></li>
+                                                                    <li><a href="#">hp</a></li>
+                                                                    <li><a href="#">nokia</a></li>
+                                                                    <li><a href="#">Sony</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-6 has-sep">
+                                                                <h3>accessories</h3>
+                                                                <ul class="nav">
+                                                                    <li><a href="#">Duis</a></li>
+                                                                    <li><a href="#">autem </a></li>
+                                                                    <li><a href="#">vel eum </a></li>
+                                                                    <li><a href="#">iriure </a></li>
+                                                                    <li><a href="#">dolor </a></li>
+                                                                    <li><a href="#">hendrerit </a></li>
+                                                                    <li><a href="#">vulputate </a></li>
+                                                                    <li><a href="#">velit </a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#">Destop</a>
+                                                <div class="wrap-popup column2">
+                                                    <div class="popup">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <h3>brand</h3>
+                                                                <ul class="nav">
+                                                                    <li><a href="#">canon</a></li>
+                                                                    <li><a href="#">samsung</a></li>
+                                                                    <li><a href="#">nikon</a></li>
+                                                                    <li><a href="#">apple</a></li>
+                                                                    <li><a href="#">toshiba</a></li>
+                                                                    <li><a href="#">hp</a></li>
+                                                                    <li><a href="#">nokia</a></li>
+                                                                    <li><a href="#">Sony</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-md-6 has-sep">
+                                                                <h3>accessories</h3>
+                                                                <ul class="nav">
+                                                                    <li><a href="#">Duis</a></li>
+                                                                    <li><a href="#">autem </a></li>
+                                                                    <li><a href="#">vel eum </a></li>
+                                                                    <li><a href="#">iriure </a></li>
+                                                                    <li><a href="#">dolor </a></li>
+                                                                    <li><a href="#">hendrerit </a></li>
+                                                                    <li><a href="#">vulputate </a></li>
+                                                                    <li><a href="#">velit </a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#">Tablet</a>
+                                                <div class="wrap-popup column1">
+                                                    <div class="popup">
+                                                        <h3>brand</h3>
+                                                        <ul class="nav">
+                                                            <li><a href="#">canon</a></li>
+                                                            <li><a href="#">samsung</a></li>
+                                                            <li><a href="#">nikon</a></li>
+                                                            <li><a href="#">apple</a></li>
+                                                            <li><a href="#">toshiba</a></li>
+                                                            <li><a href="#">hp</a></li>
+                                                            <li><a href="#">nokia</a></li>
+                                                            <li><a href="#">Sony</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nosub"><a href="#">Electtronic</a></li>    
+                                            <li class="nosub"><a href="#">New arrivals</a></li>
+                                            <li class="nosub"><a href="#">Bestseller</a></li>
+                                            <li class="more-menu"><a href="#">Bags &amp; Cases</a></li>
+                                            <li class="more-menu"><a href="#">Accessories</a></li>
+                                            <li class="view-more"><a href="#">More category</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <ul class="menu clearfix visible-lg visible-md">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="list.html">List Page</a></li>
+                                <li><a href="grid.html">Grid Page</a></li>
+                                <li><a href="detail.html">Details Page</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="blog-detail.html">Blog details</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <nav class="navbar navbar-primary navbar-static-top hidden-lg hidden-md">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <h2 class="navbar-brand visible-xs">Menu</h2>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Computer <span class="fa fa-angle-down"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Desktop PC</a></li>
+                                        <li><a href="#">Notebook</a></li>
+                                        <li><a href="#">Gaming</a></li>
+                                        <li><a href="#">Mouse &amp; Keyboard</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Camera <span class="fa fa-angle-down"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Walkera</a></li>
+                                        <li><a href="#">Fpv System &amp; Parts</a></li>
+                                        <li><a href="#">RC Cars &amp; Parts</a></li>
+                                        <li><a href="#">Helicopters &amp; Part</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Smart Phone <span class="fa fa-angle-down"></span></a>                                   <ul class="dropdown-menu">
+                                        <li><a href="#">Accessories for iPhone</a></li>
+                                        <li><a href="#">Accessories for iPad</a></li>
+                                        <li><a href="#">Accessories for Tablet PC</a></li>
+                                        <li><a href="#">Tablet PC</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Electtronic <span class="fa fa-angle-down"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Batteries &amp; Chargers</a></li>
+                                        <li><a href="#">Headphone, Headset</a></li>
+                                        <li><a href="#">Home Audio</a></li>
+                                        <li><a href="#">Mp3 Player Accessories</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">New Arrivals</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container -->
+                </nav>
+            </div><!-- /.header-bottom -->
+        </div><!-- /.header -->
+        
