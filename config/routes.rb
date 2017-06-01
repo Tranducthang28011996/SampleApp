@@ -9,8 +9,7 @@ Rails.application.routes.draw do
     resources :categories do
       resources :subcategories
     end
-       resources :products, only: [:create, :update, :edit, :destroy]
-
+    resources :products
     root "categories#index"
   end
 end
