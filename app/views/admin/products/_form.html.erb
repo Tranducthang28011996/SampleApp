@@ -21,7 +21,7 @@
     <%= f.text_field :total, class: "form-control" %>
     <label>Select</label>
     <%= f.collection_select :subcategory_id, Subcategory.all, :id, :name, class: 'form-control' %>
-    <%= f.submit "Save",  class: 'btn btn-primary' %>
+    <%= f.submit "Save" %>
   </div>
 </div>
 <% end %>

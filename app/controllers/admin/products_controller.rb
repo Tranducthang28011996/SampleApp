@@ -6,7 +6,7 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def create
-		byebug
+		# byebug
 		 @product = Product.new(params_products)
 		 @product.save
 	end

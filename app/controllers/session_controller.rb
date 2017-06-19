@@ -7,6 +7,7 @@ class SessionController < ApplicationController
   	if @user && @user.authenticate(params[:session][:password])
 			session[:user_id] = @user.id
 			flash[:danger] = "Welcome to the Sample App!"
+      byebug
 			redirect_to root_url
 	else
 			flash[:alert] = 'Invalid email/password combination' # Not quite right!
