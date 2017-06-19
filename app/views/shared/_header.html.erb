@@ -1,5 +1,4 @@
-  
-        <div class="header">
+<div class="header">
             <div class="topbar">
                 <div class="container">
                     <div class="topbar-left">
@@ -14,7 +13,8 @@
                                  <a href="" data-toggle="modal" data-target="#myModal" >Login | Register</a>
                                   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
                                   aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
+                                  <div id="modal">
+                                    <div class="modal-dialog modal-lg">
                                       <div class="modal-content">
                                           <div class="modal-header" style="background-color: red">
                                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin-top: -11px">
@@ -22,7 +22,7 @@
                                           </div>
                                           <div class="modal-body">
                                               <div class="row">
-                                                  <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                                                  <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 199px;">
                                                       <ul class="nav nav-tabs pull-left">
                                                           <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
                                                           <li><a href="#Registration" data-toggle="tab">Register</a></li>
@@ -134,6 +134,7 @@
                                       </div>
                                   </div>
                                   </div>
+                                  </div>
                             </li>
                             <li class="dropdown">
                             <% if current_user %>
@@ -144,7 +145,7 @@
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li><a title="My Account" href="account.html">My Account</a></li>
                                     <li><a title="My Wishlist" href="wishlist.html">My Wishlist</a></li>
-                                    <li><a title="My Cart" href="cart.html">My Cart</a></li>
+                                    <li><%= link_to "My Cart", orders_path %></li>
                                     <li><a title="Checkout" href="checkout.html">Checkout</a></li>
                                     <li><%= link_to "Logout",  signout_path%></li>
                                 </ul>
@@ -260,7 +261,7 @@
                                         <div class="mini-cart-subtotal">Shipping: <span class="price">$5.00</span></div>
                                         <div class="mini-cart-subtotal">Total: <span class="price">$200.00</span></div>
                                         <div class="checkout-btn">
-                                            <a href="#" class="btn btn-default btn-md fwb">CHECK OUT</a>
+                                            <a href="#" class="btn btn-default btn-md fwb">BUY</a>
                                         </div>
                                     </div>
                                 </div>
@@ -506,8 +507,7 @@
                         <div class="col-md-9">
                             <ul class="menu clearfix visible-lg visible-md">
                                 <li><a href="index.html">Home</a></li>
-                                <li><a href="list.html">List Page</a></li>
-                                <li><a href="grid.html">Grid Page</a></li>
+                                <li><%= link_to "GRID PAGE", gridpage_index_path %></li>
                                 <li><a href="detail.html">Details Page</a></li>
                                 <li><a href="blog.html">Blog</a></li>
                                 <li><a href="blog-detail.html">Blog details</a></li>

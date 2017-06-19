@@ -1,7 +1,13 @@
 
 $(function(){
 	/* Mega Menu */
-
+	$('.mega-menu-title').click(function(){
+		if($('.mega-menu-category').is(':visible')){
+			$('.mega-menu-category').slideUp();
+		} else {
+			// $('.mega-menu-category').slideDown();
+		}
+	})
     $('.mega-menu-category .nav > li').hover(function(){
     	$(this).addClass("active");
 		$(this).find('.popup').stop(true,true).fadeIn('slow');

@@ -5,6 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
    include CarrierWave::MiniMagick
+   # include Cloudinary::CarrierWave
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -36,8 +37,17 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [800, 800]
   # Create different versions of your uploaded files:
    version :thumb do
-    process :resize_to_fit => [50, 50]
+    process :resize_to_fill => [500, 593]
    end
+
+    version :large_album do
+    process :resize_to_fit => [100, 100]
+   end
+
+# Check if it is selected
+# def is_selected?(picture)
+#   image.uploader.model.selected
+# end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
