@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # resources :session, only: [:new, :create]
+  resources :details, only: [:show]
   post 'login' => "session#create"
   post 'signup' => "users#create"
   get 'signout'=> 'session#destroy', as: 'signout'
@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :update]
   resources :oderitems, only: [:create, :destroy]
   root 'static_pages#home'
+  get 'search', to: 'product#search'
   namespace :admin do 
-    resources :categories do
+    resources :categories, only: [:index, :show] do
       resources :subcategories, only: [:index, :show]
     end
     resources :products

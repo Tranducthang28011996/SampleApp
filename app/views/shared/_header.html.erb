@@ -1,10 +1,17 @@
+<script>
+jQuery(function() {
+  return $('#q').autocomplete({
+    source: $('#q').data('autocomplete-source')
+  });
+});
+</script>
 <div class="header">
             <div class="topbar">
                 <div class="container">
                     <div class="topbar-left">
                         <ul class="topbar-nav clearfix">
-                            <li><span class="phone">0(123) 456 789</span></li>
-                            <li><span class="email">info@plazathemes.com</span></li>
+                            <li><span class="phone">+84 196 107 039</span></li>
+                            <li><span class="email">tranducthang321@gmail.com</span></li>
                         </ul>
                     </div>
                     <div class="topbar-right">
@@ -181,10 +188,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="index.html" class="logo">
-                            <%= image_tag 'logo.png' %>
-                            <!-- <img src="../../assets/images/logo.png" alt=""> -->
-                            </a>
+                          <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
+                           
                         </div>
                         <div class="col-md-9">
                             <div class="support-client">
@@ -215,51 +220,38 @@
                                     </div>
                                 </div>
                             </div><!-- /.support-client -->
-                            <form class="form-search">
-                                <input type="text" class="input-text" name="q" id="search" placeholder="Search products...">
-                                <div class="dropdown">
-                                    <button type="button" class="btn" data-toggle="dropdown">All category <span class="fa fa-angle-down"></span></button>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Computer</a></li>
-                                        <li><a href="#">Camera</a></li>
-                                        <li><a href="#">Smart Phone</a></li>
-                                        <li><a href="#">Electronic</a></li>
-                                    </ul>
-                                </div>
+                           <%= form_tag search_path,class: 'form-search', method: :get do |f| %>
+                                <%= text_field_tag :q,nil,:data => {autocomplete_source: Product.order(:name).map(&:name)}, class: 'input-text' %>
                                 <button type="submit" class="btn btn-danger"><span class="fa fa-search"></span></button>
-                            </form>
+                            <% end %>
                             <div class="mini-cart">
                                 <div class="top-cart-title">
                                     <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
                                         your cart
-                                        <span class="price">$45.00</span>
+                                        <span class="price">$<%= sum_items %></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <div class="cart-listing">
+                                        
+                                        <% list_items.each do |item| %>
                                             <div class="media">
                                                 <div class="media-left"><a href="#">
                                                 <!-- <img src="/assets/11.jpg" alt="" class="img-responsive"> -->
-                                                <%= image_tag '11.jpg', class: 'img-responsive'%>
+                                                <%= image_tag item.image.thumb.url, class: 'img-responsive'%>
                                                 </a></div>
                                                 <div class="media-body">
                                                     <button type="button" class="remove-cart-item" >&times;</button>
-                                                    <h4>Accumsan elit</h4>
-                                                    <div class="mini-cart-qty">Qty:2</div>
+                                                    <h4><%= item.name %></h4>
+                                                    <% current_order.order_items do |quantity| %>
+                                                    <div class="mini-cart-qty">Qty:<%= quantity.quantity %></div>
+                                                    <% end %>
                                                     <div class="mini-cart-price">$ 64.00</div>
                                                 </div>
                                             </div>
-                                            <div class="media">
-                                                <div class="media-left"><a href="#"><img src="/assets/13.jpg" class="img-responsive" alt=""></a></div>
-                                                <div class="media-body">
-                                                    <button type="button" class="remove-cart-item" >&times;</button>
-                                                    <h4>Accumsan elit</h4>
-                                                    <div class="mini-cart-qty">Qty:2</div>
-                                                    <div class="mini-cart-price">$ 64.00</div>
-                                                </div>
-                                            </div>
+                                            <% end %>
                                         </div><!-- /.cart-listing -->
-                                        <div class="mini-cart-subtotal">Shipping: <span class="price">$5.00</span></div>
-                                        <div class="mini-cart-subtotal">Total: <span class="price">$200.00</span></div>
+                                        <div class="mini-cart-subtotal">Shipping: <span class="price">$0</span></div>
+                                        <div class="mini-cart-subtotal">Total: <span class="price">$<%= sum_items %></span></div>
                                         <div class="checkout-btn">
                                             <a href="#" class="btn btn-default btn-md fwb">BUY</a>
                                         </div>
@@ -506,9 +498,8 @@
                         </div>
                         <div class="col-md-9">
                             <ul class="menu clearfix visible-lg visible-md">
-                                <li><a href="index.html">Home</a></li>
+                                <li><%=link_to "Home", root_path %></li>
                                 <li><%= link_to "GRID PAGE", gridpage_index_path %></li>
-                                <li><a href="detail.html">Details Page</a></li>
                                 <li><a href="blog.html">Blog</a></li>
                                 <li><a href="blog-detail.html">Blog details</a></li>
                             </ul>
@@ -571,4 +562,3 @@
                 </nav>
             </div><!-- /.header-bottom -->
         </div><!-- /.header -->
-        

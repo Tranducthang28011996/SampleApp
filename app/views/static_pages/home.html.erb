@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  </head>
   <body>
+      
         <div class="main">
             <div class="container">
                 <div class="row">
@@ -58,7 +59,7 @@
                                             <h2>50% off</h2>
                                         </div>
                                     </div>                                                                                              
-                                    <img class="img1" src=/assets/img-05.png" alt="" />                                                                                  
+                                    <img class="img1" src="/assets/img-05.png" alt="" />                                                                                  
                                 </div>
                             </div>
                         </div><!-- /.flexslider -->
@@ -419,7 +420,8 @@
                                                 </a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
-                                                        <li><a href="#" class="link-quickview">Quick View</a></li>
+                                                        <!-- <li><a href="#" class="link-quickview">View</a></li> -->
+                                                        <li><%= link_to 'View', detail_path(t), class: 'link-quickview' %></li>
                                                         <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
                                                         <li><a href="#" class="link-compare">Add to Compare</a></li>
                                                         <li><%= link_to("Add to Cart", oderitems_path(:product_id => t.id, :quantity => 1, :total_price =>t.price), method: :post, class: 'link-cart') %></li>
@@ -473,7 +475,7 @@
                                                 </a>
                                                 <div class="box-hover">
                                                     <ul class="add-to-links">
-                                                        <li><a href="#" class="link-quickview">Quick View</a></li>
+                                                        <li><%= link_to 'View', detail_path(t), class: 'link-quickview' %></a></li>
                                                         <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
                                                         <li><a href="#" class="link-compare">Add to Compare</a></li>
                                                         <li><a href="#" class="link-cart">Add to Cart</a></li>

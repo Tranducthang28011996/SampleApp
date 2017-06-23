@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
   <body>
+
         <div class="breadcrumbs">
             <div class="container">
                 <ul class="breadcrumb">
@@ -24,6 +25,7 @@
         </div>
         
         <div class="main">
+
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3 col-left">
@@ -38,12 +40,9 @@
                                         <h2>Category</h2>
                                         <div class="content-shopby">
                                             <ol>
-                                                <li><a href="#">Clothing</a></li>
-                                                <li><a href="#">Accessories</a></li>
-                                                <li><a href="#">Bags</a></li>
-                                                <li><a href="#">Shoes</a></li>
-                                                <li><a href="#">HandBag</a></li>
-                                                <li><a href="#">Fashion</a></li>
+                                            <% @categories.each do |category| %>
+                                                <li><%= link_to category.name,gridpage_index_path(:category => category.name)  %></a></li>
+                                            <% end %>
                                             </ol>
                                         </div>
                                     </div>
@@ -52,9 +51,11 @@
                                         <div class="content-shopby">
                                             <div id="slider-range"></div>
                                             <div id="search_pr">
-                                                <input type="text" name="first_price" class="form-control">
-                                                <input type="text" name="last_price" class="form-control">
-                                                <button id="search_price" name="search_price" type="button" class="btn btn-default">SHOW</button>
+                                                <%= form_tag(gridpage_index_path, method: :get) do %>
+                                                    <%= text_field_tag "first_price", nil, width: 100 %>
+                                                    <%= text_field_tag "last_price"%>
+                                                    <%= submit_tag 'SHOW', class: 'btn btn-default', id: 'search_price' %>
+                                                <% end %>
                                             </div>
                                         </div>
                                     </div>
@@ -74,11 +75,9 @@
                                         <h2>Color</h2>
                                         <div class="content-shopby">
                                             <ol>
-                                                <li><a href="#">Red</a></li>
-                                                <li><a href="#">Orange</a></li>
-                                                <li><a href="#">Blue</a></li>
-                                                <li><a href="#">Black</a></li>
-                                                <li><a href="#">Green</a></li>
+                                                <% @color_product.each do |color| %>
+                                                <li><%= link_to color,gridpage_index_path(:color => color)  %></a></li>
+                                                <% end %>
                                             </ol>
                                         </div>
                                     </div>
@@ -110,7 +109,6 @@
                                         <div class="item-inner first">
                                             <div class="images-container">
                                                 <a href="#" title="Primis in faucibus" class="product-image">
-                                                    <!-- <img src="/assets/15.jpg" alt="Primis in faucibus" /> -->
                                                     <%= image_tag t.image.thumb.url %>
                                                 </a>
                                             </div>
@@ -135,7 +133,6 @@
                                         <div class="item-inner">
                                             <div class="images-container">
                                                 <a href="#" title="Accumsan elit " class="product-image">
-                                                    <!-- <img src="/assets/14.jpg" alt="Accumsan elit " /> -->
                                                     <%= image_tag t.image.thumb.url %>
                                                 </a>
                                             </div>
@@ -160,7 +157,6 @@
                                         <div class="item-inner">
                                             <div class="images-container">
                                                 <a href="#" title="Nunc facilisis" class="product-image">
-                                                    <!-- <img src="/assets/5.jpg" alt="Nunc facilisis" /> -->
                                                     <%= image_tag t.image.thumb.url %>
                                                 </a>
                                             </div>
@@ -185,7 +181,6 @@
                                         <div class="item-inner last">
                                             <div class="images-container">
                                                 <a href="#" title="Fusce aliquam" class="product-image">
-                                                    <!-- <img src="/assets/8.jpg" alt="Fusce aliquam" /> -->
                                                     <%= image_tag t.image.thumb.url %>
                                                 </a>
                                             </div>
@@ -244,16 +239,14 @@
                                     <label>Show:</label>
                                     <div class="limiter-inner">
                                         <select class="form-control input-sm">
-                                            <option>9</option>
-                                            <option selected="selected">12</option>
-                                            <option>24</option>
-                                            <option>36</option>
+                                           <a href="google.com.vn"><%= options_for_select([["Dollar", "$"], ["Kroner", "DKK"]]) %></a>
                                         </select> 
+                                        
                                     </div>
                                 </div>
                             </div><!--- /.pager -->
                         </div><!-- /.toolbar -->
-                        <div class="row products">
+                        <div class="row products", id="sort_product_price">
                         <% @products.each do |t| %>
                             <div class="col-md-3 col-sm-6">
                                 <div class='productslider-item item'>
@@ -264,27 +257,28 @@
                                             </div>
                                             <a href="#" title="Nunc facilisis" class="product-image">
                                                 <!-- <img src="images/products/6.jpg" alt="Nunc facilisis" /> -->
-                                                <%= image_tag t.image.thumb.url %>
+                                          <%= image_tag t.image.thumb.url %>
+                                                
                                             </a>
                                             <div class="box-hover">
                                                 <ul class="add-to-links">
                                                     <li><a href="#" class="link-quickview">Quick View</a></li>
                                                     <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
                                                     <li><a href="#" class="link-compare">Add to Compare</a></li>
-                                                    <li><a href="#" class="link-cart">Add to Cart</a></li>
+                                                    <li><%= link_to("Add to Cart", oderitems_path(:product_id => t.id, :quantity => 1, :total_price =>t.price), method: :post, class: 'link-cart') %></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="des-container">
-                                            <h2 class="product-name"><a href="#" title="Nunc facilisis">Nunc facilisis</a></h2>
+                                            <h2 class="product-name"><a href="#" title="Nunc facilisis"><%= t.name %></a></h2>
                                             <div class="price-box">
                                                 <p class="special-price">
                                                     <span class="price-label">Special Price</span>
-                                                    <span class="price">$169.99</span>
+                                                    <span class="price">$<%= t.disprice %></span>
                                                 </p>
                                                 <p class="old-price">
                                                     <span class="price-label">Regular Price: </span>
-                                                    <span class="price">$189.00</span>
+                                                    <span class="price">$<%= t.price %></span>
                                                 </p>
                                             </div>
                                             <div class="ratings">
@@ -322,10 +316,7 @@
                                     <label>Show:</label>
                                     <div class="limiter-inner">
                                         <select class="form-control input-sm">
-                                            <option>9</option>
-                                            <option selected="selected">12</option>
-                                            <option>24</option>
-                                            <option>36</option>
+                                            
                                         </select> 
                                     </div>
                                 </div>

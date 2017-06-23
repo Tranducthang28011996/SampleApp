@@ -6,7 +6,6 @@ class OrdersController < ApplicationController
   def update
     order_item_ids = params.keys.select{|key| key.include?("quantity")}.map{|k|k.sub("quantity-", "").to_i}
     order_items = OrderItem.where(id: order_item_ids)
-    byebug
     order_items.each do |order_item|
       product_price = order_item.product.price
       order_item.update_attributes(quantity: params["quantity-#{order_item.id}"],
@@ -14,4 +13,5 @@ class OrdersController < ApplicationController
     end
     redirect_to :back
   end
+ 
 end

@@ -1,7 +1,12 @@
 class ProductController < ApplicationController
-	def index
-		byebug
-		# render layout: false
-		@test = params[:product_id]
-	end
+  def index
+    
+  end
+  def search
+  if params[:q].nil?
+    @product = []
+  else
+    @product = Product.search params[:q]
+  end
+end
 end

@@ -1735,6 +1735,7 @@ a:focus {
 }
 .block-layered-nav #search_pr input {
     float: left;
+    height: 32px;
     width: 70px;
 }
 .block-layered-nav #search_pr input + input {
