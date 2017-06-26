@@ -424,7 +424,7 @@
                                                         <li><%= link_to 'View', detail_path(t), class: 'link-quickview' %></li>
                                                         <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
                                                         <li><a href="#" class="link-compare">Add to Compare</a></li>
-                                                        <li><%= link_to("Add to Cart", oderitems_path(:product_id => t.id, :quantity => 1, :total_price =>t.price), method: :post, class: 'link-cart') %></li>
+                                                        <li><%= link_to("Add to Cart", oderitems_path(:product_id => t.id, :quantity => 1, :total_price =>t.price), method: :post, data: {confirm: "Are you sure?"},class: 'link-cart') %></li>
                                                     </ul>
                                                 </div>
                                             </div>

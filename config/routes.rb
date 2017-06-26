@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  get 'reviews' => 'details#list'
   resources :details, only: [:show]
+  resources :reviews
   post 'login' => "session#create"
   post 'signup' => "users#create"
   get 'signout'=> 'session#destroy', as: 'signout'

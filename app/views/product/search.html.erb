@@ -1,9 +1,25 @@
-<ul>
-  <% @product.each do |article| %>
-    <li>
-      <h3>
-        <%= link_to article.name%>
-      </h3>
-    </li>
+<div style="margin-left: 340px">
+  
+  <% @product.each do |t| %>
+    <div class="catlist">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="image-cat">
+                            <%= image_tag t.image.thumb.url %>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="name-cat"><h3><%= t.name %></h3></div>
+                        <%= link_to 'View', detail_path(t.id), class: 'view-more' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.catlist -->
   <% end %>
-</ul>
+
+</div>

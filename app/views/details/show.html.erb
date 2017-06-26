@@ -85,7 +85,25 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="product-desc"><%= @product.description %></div>
-                                    <div class="tab-pane" id="product-review">...</div>
+                                   
+                                    <div class="tab-pane" id="product-review">
+                                          <% @product_review.each do |t| %>
+                                          <% if t.user_id %>
+                                          <b><%= User.find(t.user_id).name %>:</b>
+                                          <i><%= t.content %></i><br>
+                                          <% else %>
+                                          <b><%= t.newuser %>:</b>
+                                          <i><%= t.content %></i><br
+                                          <% end %>
+                                          <% end %>
+                                        <%= form_for :review, url: reviews_path, method: :post, class: 'form-horizontal' do |f| %>
+                                        <div class="form-group">
+                                          <label for="comment"><b>COMMENT:</b></label>
+                                          <%= f.text_area :content , class: 'form-control' %>
+                                        </div>
+                                        <div><%= f.button  :submit , name: "product_id",value: @product.id, id: 'ok' %></div>
+                                        <% end %>
+                                    </div>
                                     <div class="tab-pane" id="product-tags">...</div>
                                 </div>
                             </div><!-- /.product-tab -->
