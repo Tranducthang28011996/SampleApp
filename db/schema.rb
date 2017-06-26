@@ -12,25 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20170623091246) do
 
-  create_table "carts", force: :cascade do |t|
-    t.integer  "orderstatus_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "quantity"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "oderitems", force: :cascade do |t|
-    t.float    "unitprice"
-    t.float    "totalprice"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "cart_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -60,12 +45,6 @@ ActiveRecord::Schema.define(version: 20170623091246) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.index ["order_status_id"], name: "index_orders_on_order_status_id"
-  end
-
-  create_table "orderstatuses", force: :cascade do |t|
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
