@@ -59,7 +59,7 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem 'cloudinary'
 gem 'carrierwave-crop'
-gem 'searchkick'
+# gem 'searchkick'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem "font-awesome-rails"
