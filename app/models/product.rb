@@ -5,9 +5,7 @@ class Product < ApplicationRecord
 	has_many :order_items
   has_many :users
   has_many :reviews
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-	# scope :chosen, -> { where(selected: true) }
-  
+  # include Elasticsearch::Model
+  # include Elasticsearch::Model::Callbacks
 end
 Product.import force: true
