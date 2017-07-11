@@ -1,12 +1,10 @@
 class Admin::ProductsController < ApplicationController
 	before_action :logged_in?, :is_admin?, :skiplayout
 	def new
-	
 		@product = Product.new
 	end
 
 	def create
-		# byebug
 		 @product = Product.new(params_products)
 		 @product.save
 	end
@@ -16,7 +14,6 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def destroy
-		
 		@product = Product.find(params[:id])
   		@product.destroy
 
@@ -35,7 +32,6 @@ class Admin::ProductsController < ApplicationController
 	def skiplayout
 		@skip_layout = true
 	end
-
 
 	private
 	def params_products

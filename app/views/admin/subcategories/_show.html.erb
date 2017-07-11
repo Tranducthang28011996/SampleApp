@@ -15,21 +15,20 @@
   </thead>
   <tbody>
     <% @products.each do |product| %>
-    <tr>
-      <th scope="row"><%= product.id %></th>
-      <td><%= product.name %></td>
-      <td><%= product.price %></td>
-      <td><%= product.disprice %></td>
-      <td><%= product.trademark %></td>
-      <td><%= product.size %></td>
-      <td><%= product.color %></td>
-      <td> <%= image_tag product.image.thumb.url, size: "80x80"%></td>
-      <td><%= product.total %></td>
-      <td><%= link_to 'edit', edit_admin_product_path(product.id), remote:true %></td>
-      <td><%= link_to 'Delete',admin_product_path(product), remote: true, method: :delete, class: 'delete_product' %></td>
-    </tr>
-      <% end %>
-
+      <tr>
+        <th scope="row"><%= product.id %></th>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.disprice %></td>
+        <td><%= product.trademark %></td>
+        <td><%= product.size %></td>
+        <td><%= product.color %></td>
+        <td> <%= image_tag product.image.thumb.url, size: "80x80"%></td>
+        <td><%= product.total %></td>
+        <td><%= link_to 'edit', edit_admin_product_path(product.id), remote:true %></td>
+        <td><%= link_to 'Delete',admin_product_path(product), remote: true, method: :delete, class: 'delete_product' %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 <%= link_to "New Product",  new_admin_product_path, class: 'btn btn-info', remote:true %>

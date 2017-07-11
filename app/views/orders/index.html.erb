@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-<!-- Giao dien duoc chia se mien phi tai www.ptheme.net [Free HTML Download]. SKYPE[ptheme.net] - EMAIL[ptheme.net@gmail.com].-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,127 +13,127 @@
     <link rel="stylesheet" href="../../../../../maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
   <body>
-        <div class="breadcrumbs">
-            <div class="container">
-                <ul class="breadcrumb">
-                	<li><a href="#">Home</a></li>
-                    <li class="active">Shopping Cart</li>
-               	</ul>
-            </div>
-        </div>
-        <div class="main">
-        	<div class="container">
-                <div class="cart">
-                    <div class="table-responsive">
-                	<table class="table custom-table">
-                        <thead>
-                            <tr class="first last">
-                                <th>Remove</th>
-                                <th>Image</th>
-                                <th>Product Name</th>
-                                <th>Edit</th>
-                                <th>Quantity</th>
-                                <th>Subtotal</th>
-                                <th>Grandtotal</th>
-                            </tr>
-                        </thead>
-                    <%= form_tag(order_path(current_order), method: :patch) do %>
-                        <% @order_items.each do |order_item| %>
-                            <tbody>
-                              <tr>
-                      					<td class="text-center">
-                                  <%= link_to oderitem_path(order_item), method: :delete, :remote => true, class: "btn btn-default", id: "remove_item" do %>
-                                    <i class="glyphicon glyphicon-remove"></i>Remove
-                                  <% end %>     
-                                </td>
-                      					<td>
-                                <a class="product-image" title="Primis in faucibus" href="#"><%= image_tag order_item.product.image.thumb.url %></a>
-                                  </td>
-                      					<td>
-                                  <%= link_to order_item.product.name %> 
-                                  <div class="text-muted">Size:<%= order_item.product.size %><br>Color:<%= order_item.product.color %></div>
-                                </td>
-                      					<td class="text-center"><a href="#">Edit</a></td>
-                                  		<td class="qty">
-                                         		<div class="input-group">
-                                                  <span class="input-group-btn">
-                                                      <button class="btn" type="button" onclick="tru(<%=order_item.id%>)">-</button>
-                                                  </span>
-                                                  <%= text_field_tag "quantity-#{order_item.id}", order_item.quantity, {id: "quantity-#{order_item.id}", class: "form-control"} %>
-                                                  <span class="input-group-btn">
-                                                      <button class="btn" type="button" onclick="cong(<%=order_item.id%>)">+</button>
-                                                  </span>
-                                              </div><!-- /input-group -->
-                                      	</td>
-                                  		<td class="subtotal" >$<span id="dongia-<%= order_item.id %>"><%= order_item.product.price %></span></td>
-                          			<td class="grandtotal" id="tongia-<%= order_item.id %>" ><span>$</span><%= order_item.total_price %></td>
-            				          </tr>
-                            </tbody>   
-                       <% end %>
-                    </table>
-                    </div>
-                     <div class="text-right">
-                        <%= link_to "CONTINUE SHOPPING", root_url ,class: 'btn btn-default btn-md' %> 
-                       <%= submit_tag "UPDATE SHOPPING CART", class: 'btn btn-danger btn-md' %>
-                       </div>
-                    <% end %>
-                    <div class="line2"></div>
-                    <div class="row">
-                    	<div class="col-sm-4">
-                        	<h4>ESTIMATE SHIPPING AND TAX</h4>
-                            <p class="text-muted">Enter your destination to get shipping &amp; tax</p>
-                            <div class="form-group">
-                            	<label class="control-label">Country <em>*</em></label>
-                                <select class="form-control">
-                                	<option>-- Select options  --</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                            	<label class="control-label">State/Province <em>*</em></label>
-                                <select class="form-control">
-                                	<option>-- Select options  --</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                            	<label class="control-label">Zip/Postal Code</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                            	<button type="button" class="btn btn-default btn-md">GET A QUOTE</button>
-                            </div>
-                        </div>
-                    	<div class="col-sm-4">
-                        	<h4>DISCOUNT CODE</h4>
-                        	<p class="text-muted">Enter your coupon code if you have one</p>
-                            <div class="form-group">
-                            	<label class="control-label">&nbsp;</label>
-                            	<input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                            	<button type="button" class="btn btn-default btn-md">APPLY COUPON</button>
-                            </div>
-                        </div>
-                    	<div class="col-sm-4">
-                        	<table class="table table-cart-total">
-                            	<tr>
-                                	<td>Subtotal:</td>
-                                    <td class="text-right">$250.00</td>
-                                </tr>
-                            	<tr>
-                                	<td>Grandtotal:</td>
-                                    <td class="text-right">$250.00</td>
-                                </tr>
-                            </table>
-							        <div class="text-right">
-                            	<p><button type="button" class="btn btn-default btn-md fwb">PROCCED TO CHECKOUT</button></p>
-                                <p><a href="#" class="text-muted">Checkout with multiples address</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div><!-- /.main -->
+  <div class="breadcrumbs">
+      <div class="container">
+          <ul class="breadcrumb">
+          	<li><a href="#">Home</a></li>
+              <li class="active">Shopping Cart</li>
+         	</ul>
+      </div>
+  </div>
+  <div class="main">
+  	<div class="container">
+          <div class="cart">
+              <div class="table-responsive">
+          	<table class="table custom-table">
+                  <thead>
+                      <tr class="first last">
+                          <th>Remove</th>
+                          <th>Image</th>
+                          <th>Product Name</th>
+                          <th>Edit</th>
+                          <th>Quantity</th>
+                          <th>Subtotal</th>
+                          <th>Grandtotal</th>
+                      </tr>
+                  </thead>
+              <%= form_tag(order_path(current_order), method: :patch) do %>
+                  <% @order_items.each do |order_item| %>
+                      <tbody>
+                        <tr>
+                					<td class="text-center">
+                            <%= link_to oderitem_path(order_item), method: :delete, :remote => true, class: "btn btn-default", id: "remove_item" do %>
+                              <i class="glyphicon glyphicon-remove"></i>Remove
+                            <% end %>     
+                          </td>
+                					<td>
+                          <a class="product-image" title="Primis in faucibus" href="#"><%= image_tag order_item.product.image.thumb.url %></a>
+                            </td>
+                					<td>
+                            <%= link_to order_item.product.name %> 
+                            <div class="text-muted">Size:<%= order_item.product.size %><br>Color:<%= order_item.product.color %></div>
+                          </td>
+                					<td class="text-center"><a href="#">Edit</a></td>
+                            		<td class="qty">
+                                   		<div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button class="btn" type="button" onclick="tru(<%=order_item.id%>)">-</button>
+                                            </span>
+                                            <%= text_field_tag "quantity-#{order_item.id}", order_item.quantity, {id: "quantity-#{order_item.id}", class: "form-control"} %>
+                                            <span class="input-group-btn">
+                                                <button class="btn" type="button" onclick="cong(<%=order_item.id%>)">+</button>
+                                            </span>
+                                        </div><!-- /input-group -->
+                                	</td>
+                            		<td class="subtotal" >$<span id="dongia-<%= order_item.id %>"><%= order_item.product.price %></span></td>
+                    			<td class="grandtotal" id="tongia-<%= order_item.id %>" ><span>$</span><%= order_item.total_price %></td>
+      				          </tr>
+                      </tbody>   
+                 <% end %>
+              </table>
+              </div>
+               <div class="text-right">
+                  <%= link_to "CONTINUE SHOPPING", root_url ,class: 'btn btn-default btn-md' %> 
+                 <%= submit_tag "UPDATE SHOPPING CART", class: 'btn btn-danger btn-md' %>
+                 </div>
+              <% end %>
+              <div class="line2"></div>
+              <div class="row">
+              	<div class="col-sm-4">
+                  	<h4>ESTIMATE SHIPPING AND TAX</h4>
+                      <p class="text-muted">Enter your destination to get shipping &amp; tax</p>
+                      <div class="form-group">
+                      	<label class="control-label">Country <em>*</em></label>
+                          <select class="form-control">
+                          	<option>-- Select options  --</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                      	<label class="control-label">State/Province <em>*</em></label>
+                          <select class="form-control">
+                          	<option>-- Select options  --</option>
+                          </select>
+                      </div>
+                      <div class="form-group">
+                      	<label class="control-label">Zip/Postal Code</label>
+                          <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                      	<button type="button" class="btn btn-default btn-md">GET A QUOTE</button>
+                      </div>
+                  </div>
+              	<div class="col-sm-4">
+                  	<h4>DISCOUNT CODE</h4>
+                  	<p class="text-muted">Enter your coupon code if you have one</p>
+                      <div class="form-group">
+                      	<label class="control-label">&nbsp;</label>
+                      	<input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                      	<button type="button" class="btn btn-default btn-md">APPLY COUPON</button>
+                      </div>
+                  </div>
+              	<div class="col-sm-4">
+                  	<table class="table table-cart-total">
+                      	<tr>
+                          	<td>Subtotal:</td>
+                              <td class="text-right">$250.00</td>
+                          </tr>
+                      	<tr>
+                          	<td>Grandtotal:</td>
+                              <td class="text-right">$250.00</td>
+                          </tr>
+                      </table>
+				        <div class="text-right">
+                      	<p><button type="button" class="btn btn-default btn-md fwb">PROCCED TO CHECKOUT</button></p>
+                          <p><a href="#" class="text-muted">Checkout with multiples address</a></p>
+                      </div>
+                  </div>
+              </div>
+              </form>
+          </div>
+      </div>
+  </div><!-- /.main -->
 </html>
 <script>
         function cong(order_item_id) {

@@ -4,6 +4,7 @@ class DetailsController < ApplicationController
     @product = Product.find params[:id]
     @product_review = @product.reviews
   end
+  
   def list
      
   end

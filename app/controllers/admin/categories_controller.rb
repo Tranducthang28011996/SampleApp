@@ -3,10 +3,12 @@ class Admin::CategoriesController < ApplicationController
 	def index
 		@categories = Category.all
 	end
+
 	def show
 		@category = Category.find(params[:id])
 		@subcategories = @category.subcategories		
 	end
+	
 	def skiplayout
 		@skip_layout = true
 	end
